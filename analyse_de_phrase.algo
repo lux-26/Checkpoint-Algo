@@ -1,0 +1,36 @@
+
+ALGORITHM analyse_de_phrase
+VAR
+    longueur, nbre_mots, nbre_voyelles : INTEGER;
+    caractere : CHAR;
+
+BEGIN
+    longueur := 0;
+    nbre_mots := 0;
+    nbre_voyelles := 0;
+
+    WRITE("Entrez votre phrase (terminez par un point) :");
+
+    REPEAT 
+        LIRE(caractere);
+        longueur := longueur + 1;
+
+        IF caractere IN ['a', 'e', 'u', 'i', 'o', 'y', 'A', 'E', 'I', 'O', 'U', 'Y'] THEN
+            nbre_voyelles := nbre_voyelles + 1;
+        END_IF;
+
+
+        IF caractere = ' ' THEN
+            nbre_mots := nbre_mots + 1;
+        END_IF;
+
+    UNTIL caractere = '.';
+
+    IF longueur > 1 THEN
+        nbre_mots := nbre_mots + 1;
+    END_IF;
+
+    WRITE("Longueur de la phrase : ", longueur);
+    WRITE("Nombre de mots : ", nbre_mots);
+    WRITE("Nombre de voyelles : ", nbre_voyelles);
+END
